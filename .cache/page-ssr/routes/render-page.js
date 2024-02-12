@@ -1553,6 +1553,18 @@ var plugins = [{
     "plugins": []
   }
 }, {
+  name: 'gatsby-omni-font-loader',
+  plugin: __webpack_require__(/*! ./node_modules/gatsby-omni-font-loader/gatsby-ssr.js */ "./node_modules/gatsby-omni-font-loader/gatsby-ssr.js"),
+  options: {
+    "plugins": [],
+    "enableListener": true,
+    "preconnect": ["https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+    "web": [{
+      "name": "Open Sans",
+      "file": "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+    }]
+  }
+}, {
   name: 'partytown',
   plugin: __webpack_require__(/*! ./node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js */ "./node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js"),
   options: {
@@ -1905,6 +1917,42 @@ HTML.propTypes = {
 
 /***/ }),
 
+/***/ "./node_modules/gatsby-omni-font-loader/gatsby-ssr.js":
+/*!************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/gatsby-ssr.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   onRenderBody: () => (/* binding */ onRenderBody)
+/* harmony export */ });
+/* harmony import */ var _consts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./consts */ "./node_modules/gatsby-omni-font-loader/consts/index.ts");
+/* harmony import */ var _generators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./generators */ "./node_modules/gatsby-omni-font-loader/generators/index.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./node_modules/gatsby-omni-font-loader/utils/index.ts");
+
+
+
+const onRenderBody = ({
+  setHeadComponents
+}, {
+  preconnect = [],
+  preload = [],
+  web = [],
+  custom = [],
+  mode = _consts__WEBPACK_IMPORTED_MODULE_0__.MODE_DEFAULT
+}) => {
+  const allFonts = [...web, ...custom];
+  const allPreloads = preload.concat((0,_utils__WEBPACK_IMPORTED_MODULE_2__.getFontFiles)(allFonts));
+  const preloadConfig = (0,_generators__WEBPACK_IMPORTED_MODULE_1__.getFontConfig)(preconnect, allPreloads, mode === "async" ? [] : allFonts);
+  if (preloadConfig && Boolean(preloadConfig.length)) {
+    setHeadComponents(preloadConfig);
+  }
+};
+
+/***/ }),
+
 /***/ "./node_modules/gatsby-plugin-image/gatsby-ssr.js":
 /*!********************************************************!*\
   !*** ./node_modules/gatsby-plugin-image/gatsby-ssr.js ***!
@@ -1953,6 +2001,204 @@ function onRenderBody(_ref) {
   })]);
 }
 exports.onRenderBody = onRenderBody;
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/consts/defaults.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/consts/defaults.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MODE_DEFAULT: () => (/* binding */ MODE_DEFAULT),
+/* harmony export */   SCOPE_DEFAULT: () => (/* binding */ SCOPE_DEFAULT)
+/* harmony export */ });
+const MODE_DEFAULT = "async";
+const SCOPE_DEFAULT = "body";
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/consts/index.ts":
+/*!**************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/consts/index.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MODE_DEFAULT: () => (/* reexport safe */ _defaults__WEBPACK_IMPORTED_MODULE_0__.MODE_DEFAULT),
+/* harmony export */   SCOPE_DEFAULT: () => (/* reexport safe */ _defaults__WEBPACK_IMPORTED_MODULE_0__.SCOPE_DEFAULT)
+/* harmony export */ });
+/* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaults */ "./node_modules/gatsby-omni-font-loader/consts/defaults.ts");
+
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/generators/getFontConfig.tsx":
+/*!***************************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/generators/getFontConfig.tsx ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getFontConfig: () => (/* binding */ getFontConfig)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./node_modules/gatsby-omni-font-loader/utils/index.ts");
+
+
+const getFontConfig = (preconnectConfig, preloadConfig, renderBlockingFonts) => {
+  const headComponents = [];
+  if ((0,_utils__WEBPACK_IMPORTED_MODULE_1__.arrayCheck)(preconnectConfig)) {
+    preconnectConfig.forEach(href => {
+      headComponents.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+        key: `preconnect-${href}`,
+        rel: "preconnect",
+        href: href,
+        crossOrigin: "true"
+      }));
+    });
+  }
+  if ((0,_utils__WEBPACK_IMPORTED_MODULE_1__.arrayCheck)(preloadConfig)) {
+    preloadConfig.forEach(href => {
+      headComponents.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+        key: `preload-${href}`,
+        rel: "stylesheet",
+        href: href
+      }));
+    });
+  }
+  if ((0,_utils__WEBPACK_IMPORTED_MODULE_1__.arrayCheck)(renderBlockingFonts)) {
+    renderBlockingFonts.forEach(({
+      name,
+      file
+    }) => {
+      const key = Array.isArray(name) ? name.map(n => (0,_utils__WEBPACK_IMPORTED_MODULE_1__.kebabCase)(n)).join("-") : (0,_utils__WEBPACK_IMPORTED_MODULE_1__.kebabCase)(name);
+      headComponents.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+        key: `render-blocking-${key}`,
+        href: file,
+        rel: "stylesheet"
+      }));
+    });
+  }
+  return headComponents;
+};
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/generators/index.ts":
+/*!******************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/generators/index.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getFontConfig: () => (/* reexport safe */ _getFontConfig__WEBPACK_IMPORTED_MODULE_0__.getFontConfig)
+/* harmony export */ });
+/* harmony import */ var _getFontConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getFontConfig */ "./node_modules/gatsby-omni-font-loader/generators/getFontConfig.tsx");
+
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/utils/arrayCheck.ts":
+/*!******************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/utils/arrayCheck.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   arrayCheck: () => (/* binding */ arrayCheck)
+/* harmony export */ });
+const arrayCheck = arr => arr && Array.isArray(arr) && Boolean(arr.length);
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/utils/getFontFiles.ts":
+/*!********************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/utils/getFontFiles.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getFontFiles: () => (/* binding */ getFontFiles)
+/* harmony export */ });
+const getFontFiles = allFonts => allFonts.map(({
+  file
+}) => file);
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/utils/getFontNames.ts":
+/*!********************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/utils/getFontNames.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getFontNames: () => (/* binding */ getFontNames)
+/* harmony export */ });
+const getFontNames = allFonts => {
+  const fontNames = [];
+  allFonts.forEach(({
+    name
+  }) => Array.isArray(name) ? fontNames.push(...name) : fontNames.push(name));
+  return fontNames;
+};
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/utils/index.ts":
+/*!*************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/utils/index.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   arrayCheck: () => (/* reexport safe */ _arrayCheck__WEBPACK_IMPORTED_MODULE_0__.arrayCheck),
+/* harmony export */   getFontFiles: () => (/* reexport safe */ _getFontFiles__WEBPACK_IMPORTED_MODULE_2__.getFontFiles),
+/* harmony export */   getFontNames: () => (/* reexport safe */ _getFontNames__WEBPACK_IMPORTED_MODULE_3__.getFontNames),
+/* harmony export */   kebabCase: () => (/* reexport safe */ _kebabCase__WEBPACK_IMPORTED_MODULE_1__.kebabCase)
+/* harmony export */ });
+/* harmony import */ var _arrayCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayCheck */ "./node_modules/gatsby-omni-font-loader/utils/arrayCheck.ts");
+/* harmony import */ var _kebabCase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./kebabCase */ "./node_modules/gatsby-omni-font-loader/utils/kebabCase.ts");
+/* harmony import */ var _getFontFiles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getFontFiles */ "./node_modules/gatsby-omni-font-loader/utils/getFontFiles.ts");
+/* harmony import */ var _getFontNames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getFontNames */ "./node_modules/gatsby-omni-font-loader/utils/getFontNames.ts");
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-omni-font-loader/utils/kebabCase.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/gatsby-omni-font-loader/utils/kebabCase.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   kebabCase: () => (/* binding */ kebabCase)
+/* harmony export */ });
+const kebabCase = str => str.match(/[A-Z]{2,}(?=[A-Z][a-z0-9]*|\b)|[A-Z]?[a-z0-9]*|[A-Z]|[0-9]+/g).filter(Boolean).map(x => x.toLowerCase()).join("-");
 
 /***/ }),
 

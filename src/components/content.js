@@ -1,22 +1,24 @@
-import * as React from "react"
-import * as Functions from '../components/functions'
+import React from "react";
+import { Logo } from '../components/functions';
 
 export const Header = () => {
   return (
-    <header>
-      {/* Header content */}
-      <img src={ Functions.Logo } alt="Logo" />
+    <header>{/* Header content */}
       <h1>Header</h1>
+      <Logo /> {/* Use Logo component */}
+      
     </header>
   );
 };
 
 export const Hero = () => {
   return (
-    <section>
+    <section className="Hero"> 
+    <h1>Hero</h1>
       {/* Hero content */}
-      <div><h1>Welcome To FortyTwo Technology</h1>
-      <h2>Empowering our community with accessible, reliable, and value-driven technology services.</h2>
+      <div>
+        <h1>Welcome To FortyTwo Technology</h1>
+        <h2>Empowering our community with accessible, reliable, and value-driven technology services.</h2>
       </div>
       <div>
         <h1>Need tech help?</h1>
@@ -28,7 +30,7 @@ export const Hero = () => {
 
 export const Services = () => {
   return (
-    <section>
+    <section className="Services">
       {/* Services content */}
       <h2>Services</h2>
     </section>

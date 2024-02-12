@@ -1,0 +1,19 @@
+* {
+    color: #050038
+}
+
+header {
+    height:auto;
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+body {
+    font-family:"Open Sans";
+}
+
+p {
+    text-decoration: none;
+}
