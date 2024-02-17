@@ -1,10 +1,7 @@
+// index.js
 import * as React from "react"
-import { Link } from "gatsby"
 import Layout from '../components/layout';
 import * as Content from '../components/content';
-import { Seo } from '../components/functions'
-
-
 
 const LandingPage = () => {
     return (
@@ -17,7 +14,6 @@ const LandingPage = () => {
         <Content.Footer />
       </Layout>
     );
-  };
+};
 
-  /*export const Head = () => <Seo title="FortyTwo Technology" />*/
-  export default LandingPage
+export default LandingPage;
