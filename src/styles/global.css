@@ -5,9 +5,19 @@
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #050038;
+  font-size: 20px;
 }
 .body-font-light {
   color:#ffffff;
@@ -22,7 +32,7 @@ header {
   width: 100%;
 }
 
-.header-content {
+.header-layout {
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
@@ -47,7 +57,7 @@ nav a {
   color: #050038;
 }
 
-/* Sections */
+/* General Sections CSS */
 section {
   display: inline;
   justify-content: space-between;
@@ -64,79 +74,130 @@ section {
   color: #ffffff;
 }
 
-.section-content {
+.section-layout {
   padding: 20px;
-}
-
-.section-services {
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .section-flex {
-  width: 50%;
-  padding: 10px;
-  box-sizing: border-box;
+  display: flex;
+  flex: 3;
+  width: 100%;
+  padding: 40px;
 }
 
 /* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+  
+}
+
+.hero-left,
+.hero-right {
+  flex: 1;
+}
+
+.hero-left {
+  padding: 20px;
+  max-width: 800px;
+}
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+}
+
 .hero-bg-image {
   max-height: 700px;
   background-image: url("../images/hero-bg.jpg");
   background-size: cover;
   background-position: center;
-  position: relative;
+  z-index: 10; /* Set a lower z-index than the overlay */
+}
+
+.hero-bg-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.8) for opacity */
+  z-index: 12; /* Set a higher z-index than the image */
 }
 
 .hero-text {
-  background-image: url("../images/hero-bg.jpg");
-  background-color: rgba(0, 0, 0, 0.7); /* Dark background color */
-  background-size: cover;
-  background-position: center;
+  position: relative; /* Ensure the hero text is positioned above the overlay */
   padding: 20px; /* Add padding to create space around the text */
-  opacity: 0.7; /* Adjust opacity as needed */
   text-align: center;
+  color:#ffffff;
+  z-index: 14; /* Set a higher z-index than the overlay */
 }
 
-
 .contact-button {
-  display: inline-block;
+  display: inline-flex;
   padding: 10px 20px;
-  margin-top: 20px;
   background-color: #007bff;
   color: white;
   text-decoration: none;
   border-radius: 5px;
+  z-index: 16;
 }
+
 
 .contact-button:hover {
   background-color: #0056b3;
 }
 
+/* Services */
+
+
 /* Footer */
 footer {
-  position: relative;
-  height: 300px;
-  width: 100%;
+  position:relative;
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #222222;
   color: #ffffff;
-}
-
-.footer-content {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  width: 100%;
   padding: 20px;
+  margin: 0 auto;
+  max-height: 300px;
+  width: 100%;
 }
 
-.footer-content a {
+.footer-layout {
+  width: 100%;
+  height: 100%;
+}
+
+.footer-layout a {
   color: inherit;
   text-decoration: none;
+}
+
+.footer-left,
+.footer-right {
+  flex: 3;
+}
+
+.footer-left {
+  padding: 20px;
+  max-width: 300px;
+}
+
+.footer-right {
+  position: relative;
+  overflow: hidden;
+  max-width: 300px;
 }
 
 /* Form */

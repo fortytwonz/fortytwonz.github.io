@@ -1,10 +1,10 @@
 // content.js
 import React from "react";
-import { Navigation, Logo, ContactForm } from "../components/functions";
+import { ContactButton, ContactForm, HeroBG, Logo, Navigation } from "../components/functions";
 
 export const Header = () => {
   return (
-    <header className="header-content">
+    <header className="header-layout">
       <div className="header-logo"><Logo /></div>
       <Navigation />
     </header>
@@ -14,30 +14,34 @@ export const Header = () => {
 export const Hero = () => {
   return (
     <section className="Hero">
-      <div className="section-content">
-        <div className="hero-content">
-          <h1>Welcome To FortyTwo Technology</h1>
-          <p>
-            Empowering our community with accessible, reliable, and value-driven
-            technology services.
-          </p>
-          <div className="hero-text">
-            <h1 className="body-font-light">Need tech help?</h1>
-            <a href="#contact" className="contact-button">Contact Us</a>
+      <div className="hero">
+          <div className="hero-left">
+            <h1>Welcome To FortyTwo Technology</h1>
+              <p>
+                Empowering our community with accessible, reliable, and value-driven
+                technology services.
+              </p>
+              <br />
+              <a href="#services">See Our Services</a>
+              <br />
           </div>
-        </div>
+          <div className="hero-right">
+            <div className="hero-bg-image">
+              <HeroBG /></div>
+              <div className="hero-text">
+                <h1 className="body-font-light">Need tech help?</h1></div>
+                <ContactButton />
+          </div>
       </div>
     </section>
   );
 };
 
-
-
 export const Services = () => {
   return (
     <section className="Services">
-      <div className="services-content">
-        <div className="services-flex">
+      <div className="section-layout">
+        <div className="section-flex">
           <Logo />
           <h2>Printing</h2>
           <p>Affordable, quality printing services. Custom print and design on request.</p>
@@ -76,7 +80,7 @@ export const About = () => {
   return (
     <section className="About">
       <div className="section-dark">
-        <div className="section-content">
+        <div className="section-layout">
         <h2>About</h2>
           <p>FortyTwo Technology Ltd is Polynesian-owned and proud of it. We're not just about technology – we're here to help everyone in our community with easy and smart solutions. We care about you and want to make a real difference in Otara. Join us as we make technology work for all of us!</p>
         </div>
@@ -88,7 +92,7 @@ export const About = () => {
 export const Contact = () => {
   return (
     <section className="Contact">
-      <div className="section-content">
+      <div className="section-layout">
         <h2>Contact</h2>
         <div className="section-form"><ContactForm /></div>
       </div>
@@ -99,10 +103,12 @@ export const Contact = () => {
 export const Footer = () => {
   return (
     <footer className="footer">
-      <section className="footer-content">
-        <h3>Footer</h3>
-        <Navigation />
+      <section className="footer-layout">
+        <div className="footer-left"><h3>Footer</h3>
+        <Navigation /></div>
+        <div className="footer-right">
         <p>FortyTwo Technology Ltd is Polynesian-owned and proud of it.</p>
+        </div>
         <p>
           Copyright © {new Date().getFullYear()} &middot;FortyTwo Technology Ltd.
           Built with{` `}<a href="https://www.gatsbyjs.com">Gatsby</a>

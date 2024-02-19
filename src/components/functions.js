@@ -19,7 +19,6 @@ export const Logo = () => (
     src="../images/logo-6.svg" 
     alt="Logo"
     className="header-logo"
-    style={{ maxWidth: '100%', height: 'auto' }}
   />
 );
 
