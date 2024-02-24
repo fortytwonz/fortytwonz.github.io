@@ -26,11 +26,16 @@ export const Hero = () => {
               <br />
           </div>
           <div className="hero-right">
-            <div className="hero-bg-image">
-              <HeroBG /></div>
-              <div className="hero-text">
-                <h1 className="body-font-light">Need tech help?</h1></div>
-                <ContactButton />
+          <div className="hero-bg-image">
+              <HeroBG />
+            </div>
+            <div className="hero-text">  
+              <h1 className="body-font-light">Need tech help?
+              </h1>
+              <br/>
+              <ContactButton />
+
+            </div>                
           </div>
       </div>
     </section>
@@ -41,6 +46,9 @@ export const Services = () => {
   return (
     <section className="Services">
       <div className="section-layout">
+      <h1>Services</h1>
+      < br/>
+      <div className="section-inline">
         <div className="section-flex">
           <Logo />
           <h2>Printing</h2>
@@ -71,6 +79,7 @@ export const Services = () => {
           <h2>Support</h2>
           <p>In-store tech advice and assistance.</p>
         </div>
+        </div>
       </div>
     </section>
   );
@@ -82,8 +91,10 @@ export const About = () => {
       <div className="section-dark">
         <div className="section-layout">
         <h2>About</h2>
+        < br/>
           <p>FortyTwo Technology Ltd is Polynesian-owned and proud of it. We're not just about technology – we're here to help everyone in our community with easy and smart solutions. We care about you and want to make a real difference in Otara. Join us as we make technology work for all of us!</p>
         </div>
+        <br/>
       </div>
     </section>
   );

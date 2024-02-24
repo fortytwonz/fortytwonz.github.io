@@ -1,6 +1,7 @@
 // functions.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StaticImage } from "gatsby-plugin-image";
+
 
 export const Navigation = () => {
   return (
@@ -14,13 +15,36 @@ export const Navigation = () => {
   );
 };
 
-export const Logo = () => (
-  <StaticImage 
-    src="../images/logo-6.svg" 
-    alt="Logo"
-    className="header-logo"
-  />
-);
+export const Logo = () => {
+  const [logo, setLogo] = useState(null);
+  const logoImages = [
+    require('../images/logos/logo-1.svg'),
+    require('../images/logos/logo-2.svg'),
+    require('../images/logos/logo-3.svg'),
+    require('../images/logos/logo-4.svg'),
+    require('../images/logos/logo-5.svg'),
+    require('../images/logos/logo-6.svg'),
+    // Add more logo image file paths as needed
+  ];
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * logoImages.length);
+    const randomLogo = logoImages[randomIndex];
+    setLogo(randomLogo);
+  }, []); // Empty dependency array ensures this effect runs only once on component mount
+
+  return <img src={logo} alt="Logo" className="header-logo" />;
+};
+
+
+//OLD Logo Code
+//export const Logo = () => (
+//  <StaticImage 
+//    src="../images/logo-6.svg" 
+//    alt="Logo"
+//    className="header-logo"
+//  />
+//);
 
 export const HeroBG = () => (
   <StaticImage 
