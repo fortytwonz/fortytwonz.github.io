@@ -1,6 +1,12 @@
 // functions.js
 import React, { useState, useEffect } from 'react';
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage } from 'gatsby-plugin-image';
+import logo1 from '../images/logos/logo-1.svg';
+import logo2 from '../images/logos/logo-2.svg';
+import logo3 from '../images/logos/logo-3.svg';
+import logo4 from '../images/logos/logo-4.svg';
+import logo5 from '../images/logos/logo-5.svg';
+import logo6 from '../images/logos/logo-6.svg';
 
 
 export const Navigation = () => {
@@ -17,42 +23,49 @@ export const Navigation = () => {
 
 export const Logo = () => {
   const [logo, setLogo] = useState(null);
-  const logoImages = [
-    require('../images/logos/logo-1.svg'),
-    require('../images/logos/logo-2.svg'),
-    require('../images/logos/logo-3.svg'),
-    require('../images/logos/logo-4.svg'),
-    require('../images/logos/logo-5.svg'),
-    require('../images/logos/logo-6.svg'),
-    // Add more logo image file paths as needed
-  ];
+  const logoImages = [logo1, logo2, logo3, logo4, logo5, logo6];
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * logoImages.length);
     const randomLogo = logoImages[randomIndex];
     setLogo(randomLogo);
-  }, []); // Empty dependency array ensures this effect runs only once on component mount
+  }, []);
 
   return <img src={logo} alt="Logo" className="header-logo" />;
 };
 
 
-//OLD Logo Code
-//export const Logo = () => (
-//  <StaticImage 
-//    src="../images/logo-6.svg" 
-//    alt="Logo"
-//    className="header-logo"
-//  />
-//);
+export const LogoServices = ({ src }) => (
+  <StaticImage
+    src={src}
+    alt="Logo"
+    className="logo-image"
+  />
+);
 
-export const HeroBG = () => (
+export const HeroBG = ({ src }) => (
   <StaticImage 
-    src="../images/hero-bg.jpg" 
+    src={src} 
     alt="Hero Background Image"
     className="hero-bg-image"
   />
 );
+
+//export const LogoServices = ({ src }) => (
+//  <StaticImage
+//    src={src}
+//    alt="Logo"
+//    className="logo-image"
+//  />
+//);
+
+//export const HeroBG = ({ src }) => (
+//  <StaticImage 
+//    src={src} 
+//    alt="Hero Background Image"
+//    className="hero-bg-image"
+//  />
+//);
 
 export const ContactButton = () => {
   return (

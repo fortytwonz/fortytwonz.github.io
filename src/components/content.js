@@ -1,6 +1,6 @@
 // content.js
 import React from "react";
-import { ContactButton, ContactForm, HeroBG, Logo, Navigation } from "../components/functions";
+import { ContactButton, ContactForm, HeroBG, Logo, LogoServices, Navigation } from "../components/functions";
 
 export const Header = () => {
   return (
@@ -27,7 +27,7 @@ export const Hero = () => {
           </div>
           <div className="hero-right">
           <div className="hero-bg-image">
-              <HeroBG />
+            <HeroBG src="../images/hero-bg.jpg" />
             </div>
             <div className="hero-text">  
               <h1 className="body-font-light">Need tech help?
@@ -50,7 +50,7 @@ export const Services = () => {
       < br/>
       <div className="section-inline">
         <div className="section-flex">
-          <Logo />
+          <div className="logo-image"><LogoServices src="../images/logos/logo-1.svg"/></div>
           <h2>Printing</h2>
           <p>Affordable, quality printing services. Custom print and design on request.</p>
         </div>
